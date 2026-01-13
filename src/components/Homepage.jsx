@@ -8,6 +8,7 @@ There should also be a button to RSVP
 import React from 'react';
 import { Link } from 'react-router-dom';
 import homePageImage from '../assets/homePageImage.jpg';
+import './Homepage.css';
 
 function Homepage() {
     return (
