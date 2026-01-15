@@ -1,16 +1,26 @@
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 /* navbar */
 
 .navbar {
   width: 100%;
-  padding: 1rem 2rem;
+  padding: 1.5rem 3rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   background-color: rgb(92, 182, 131);
-  border-bottom: 1px solid rgb(0, 0, 128)
+  border-bottom: 1px solid rgb(0, 0, 128);
+
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
 }
 
 .nav-title {
