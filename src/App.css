@@ -67,3 +67,28 @@
     background-color: rgba(255, 255, 255, 0.8);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
+.color-palette {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.color-swatch {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.navy-blue {
+    background-color: #000080;
+}
+
+.terracotta {
+    background-color: #e25a4b;
+}
+
+.sage-green {
+    background-color: #8a9a5b;
+}

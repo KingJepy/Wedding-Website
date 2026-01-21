@@ -12,6 +12,11 @@ function Details() {
                     <p>
                         Our celebration will feature deep navy blues alongside warm terracotta and burnt orange hues, accented with subtle sage green undertones. Guests are welcome to incorporate these colors into their attire to complement the day.
                     </p>
+                    <div className="color-palette">
+                        <div className="color-swatch navy-blue"></div>
+                        <div className="color-swatch terracotta"></div>
+                        <div className="color-swatch sage-green"></div>
+                    </div>
                 </section>
 
                 <section>
