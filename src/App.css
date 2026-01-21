@@ -72,6 +72,9 @@
     display: flex;
     gap: 1rem;
     margin-top: 1rem;
+
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .color-swatch {
@@ -91,4 +94,27 @@
 
 .sage-green {
     background-color: #8a9a5b;
+}
+
+@media (max-width: 768px) {
+    .details-page {
+        padding: 2rem 1rem;
+    }
+
+    .details-page h1 {
+        font-size: 2.5rem;
+    }
+
+    .details-page h2 {
+        font-size: 1.5rem;
+    }
+
+    .details-page section {
+        padding: 1.25rem;
+    }
+
+    .color-swatch {
+        width:44px;
+        height:44px;
+    }
 }
