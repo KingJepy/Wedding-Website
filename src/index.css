@@ -47,6 +47,7 @@
 }
 
 .hamburger {
+  z-index: 1100;
   display: none;
   font-size: 2rem;
   background: none;
@@ -64,48 +65,36 @@
 }
 
 @media (max-width: 768px) {
-  .navbar {
-    flex-direction: row;
-  }
-
   .hamburger {
     display: block;
-    transition: transform 0.2s ease;
   }
 
   .nav-links {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 260px;
+
     background-color: #8a9a5b;
-    flex-direction: column;
-    align-items: center;
-
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transform: translateY(-10px);
-
-    transition:
-      max-height 0.35s ease,
-      opacity 0.2s ease,
-      transform 0.2s ease;
-    
-    border-bottom: 1px solid rgb(0, 0, 128);
-    
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+
+    padding: 6rem 1.5rem 2rem;
+
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
   }
 
   .nav-links.open {
-    max-height: 300px;
-    opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
   }
 
   .nav-links a {
-    padding: 0.75rem 0;
-    font-size: 1.2rem;
+    margin: 0 0 1.5rem 0;
+    font-size: 1.4rem;
   }
 }
