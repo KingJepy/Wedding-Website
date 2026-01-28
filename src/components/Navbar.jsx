@@ -12,11 +12,13 @@ function Navbar() {
 
             {/* hamburger button for mobile */}
             <button 
-                className="hamburger"
+                className={`hamburger ${menuOpen ? "open" : ""}`}
                 onClick={() => setMenuOpen(!menuOpen)}
                 aria-label="Toggle Nav Menu"
             >
-                ☰
+                <span className="hamburger-icon">
+                    {menuOpen ? "✖" : "☰"}
+                </span>
             </button>
 
             {/* nav links */}
