@@ -65,6 +65,26 @@
 }
 
 @media (max-width: 768px) {
+
+  .backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    backdrop-filter: blur(2px);
+
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .backdrop.show {
+    opacity: 1;
+  }
+
   .hamburger {
     display: block;
   }
@@ -73,10 +93,14 @@
     position: fixed;
     top: 0;
     right: 0;
-    height: 100vh;
+    height: auto; 
+    max-height: 100vh;
     width: 260px;
 
-    background-color: #8a9a5b;
+    background-color: rgba(138, 154, 91, 0.7);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(10px);
+
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -85,6 +109,8 @@
 
     transform: translateX(100%);
     transition: transform 0.3s ease;
+
+    z-index: 1000;
 
     box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
   }

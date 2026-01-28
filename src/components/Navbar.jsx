@@ -21,6 +21,13 @@ function Navbar() {
                 </span>
             </button>
 
+            {menuOpen && (
+                <div
+                    className={`backdrop ${menuOpen ? "show" : ""}`}
+                    onClick={() => setMenuOpen(false)}
+                    ></div>
+            )}
+
             {/* nav links */}
             <div className={`nav-links ${menuOpen ? "open" : ''}`}>
                 <NavLink to="/" end onClick={() => setMenuOpen(false)}>Home</NavLink>
