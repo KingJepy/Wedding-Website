@@ -64,6 +64,53 @@
   transform: rotate(90deg);
 }
 
+/* rsvp css */
+
+.rsvp-page {
+  min-height: 100vh;
+  padding: 1rem 2.5rem;
+  background-color: rgba(191, 87, 0, 0.658);
+  color: rgb(0, 0, 128);
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.rsvp-start-btn {
+  font-size: 1.5rem;
+  padding: 1rem 2.5rem;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  background-color: #8a9a5b;
+  color: rgb(0, 0, 128);
+}
+
+rsvp-form {
+  max-width: 600px;
+  margin: 2rem auto;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 2rem;
+  border-radius: 16px;
+}
+
+.rsvp-form label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.rsvp-form input[type="text"],
+.rsvp-form input[type="email"] {
+  padding: 0.6rem;
+  font-size: 1rem;
+  margin-top: 0.4rem;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
 @media (max-width: 768px) {
 
   .backdrop {
