@@ -58,7 +58,7 @@ function Rsvp() {
             )}
 
             {showForm && (
-                <form className="rsvp-form">
+                <form className="rsvp-form" onSubmit={handleSubmit}>
                     <h2>Your RSVP Information</h2>
 
                     <label>
