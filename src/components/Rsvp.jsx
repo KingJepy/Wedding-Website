@@ -12,6 +12,13 @@ function Rsvp() {
     const [vegetarian, setVegetarian] = useState(false);
     const [songRequest, setSongRequest] = useState("");
 
+    //guest info 
+    const [bringingGuest, setBringingGuest] = useState(true);
+
+    const [guestName, setGuestName] = useState("");
+    const [guestEmail, setGuestEmail] = useState("");
+    const [guestVegetarian, setGuestVegetarian] = useState(false);
+    const [guestSongRequest, setGuestSongRequest] = useState("");
 
     return (
         <div className="rsvp-page">
@@ -80,6 +87,71 @@ function Rsvp() {
                             onChange={(e) => setSongRequest(e.target.value)}
                         />
                     </label>
+
+                    <label className="guest-toggle">
+                        <input
+                            type="checkbox"
+                            checked={bringingGuest}
+                            onChange={() => setBringingGuest(!bringingGuest)}
+                        />
+                        Bringing a Guest?
+                    </label>
+
+                    {bringingGuest && (
+                        <div className="guest-section">
+                            <h2>Guest Information</h2>
+                            <label>
+                                Guest Name
+                                <input
+                                    type="text"
+                                    value={guestName}
+                                    onChange={(e) => setGuestName(e.target.value)}
+                                />
+                            </label>
+
+                            <label>
+                                Guest Email
+                                <input
+                                    type="email"
+                                    value={guestEmail}
+                                    onChange={(e) => setGuestEmail(e.target.value)}
+                                />
+                            </label>
+
+                            <div className="radio-group">
+                                <p>Guest Dietary Preference</p>
+
+                                <label>
+                                    <input
+                                        type="radio"
+                                        name="guest-diet"
+                                        checked={!guestVegetarian}
+                                        onChange={() => setGuestVegetarian(false)}
+                                    />
+                                    Not Vegetarian
+                                </label>
+
+                                <label>
+                                    <input
+                                        type="radio"
+                                        name="guest-diet"
+                                        checked={guestVegetarian}
+                                        onChange={() => setGuestVegetarian(true)}
+                                    />
+                                    Vegetarian
+                                </label>
+                            </div>
+
+                            <label>
+                                Guest Song Request
+                                <input
+                                    type="text"
+                                    value={guestSongRequest}
+                                    onChange={(e) => setGuestSongRequest(e.target.value)}
+                                />
+                            </label>
+                        </div>
+                    )}
                 </form>
             )}
         </div>

@@ -111,6 +111,20 @@ rsvp-form {
   margin-bottom: 0.5rem;
 }
 
+.guest-toggle {
+  margin: 2rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.guest-section {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(0, 0, 128, 0.3);
+}
+
 @media (max-width: 768px) {
 
   .backdrop {
