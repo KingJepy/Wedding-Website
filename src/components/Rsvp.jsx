@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -19,6 +19,30 @@ function Rsvp() {
     const [guestEmail, setGuestEmail] = useState("");
     const [guestVegetarian, setGuestVegetarian] = useState(false);
     const [guestSongRequest, setGuestSongRequest] = useState("");
+
+    //  message to the couple
+    const [message, setMessage] = useState("");
+
+    const navigate = useNavigate();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        navigate("/confirmation", {
+            state: {
+                name,
+                email,
+                vegetarian,
+                songRequest,
+                bringingGuest,
+                guestName,
+                guestEmail,
+                guestVegetarian,
+                guestSongRequest,
+                message,
+            },
+        });
+    };
 
     return (
         <div className="rsvp-page">
@@ -152,6 +176,21 @@ function Rsvp() {
                             </label>
                         </div>
                     )}
+
+                    <div className="message-section">
+                        <h2>Message for the Couple</h2>
+
+                        <textarea
+                            placeholder="Write a note to the bride & groom"
+                            value={message}
+                            onChange={(e) => setMessage(e.target.value)}
+                            rows={5}
+                        />
+                    </div>
+
+                    <button type="submit" className="submit-btn">
+                        Submit RSVP
+                    </button>
                 </form>
             )}
         </div>
