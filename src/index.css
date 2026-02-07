@@ -159,6 +159,13 @@ rsvp-form {
   opacity: 0.9;
 }
 
+.error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
 @media (max-width: 768px) {
 
   .backdrop {

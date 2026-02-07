@@ -28,7 +28,33 @@ function Rsvp() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        navigate("/confirmation", {
+        const newErrors = {};
+
+        if (!name.trim()) {
+            newErrors.name = "Name is required.";
+        }
+        if (!email.trim()) {
+            newErrors.email = "Email is required.";
+        } else if (!email.includes("@")) {
+            newErrors.email = "Email must be valid.";
+        }
+
+        if (bringingGuest) {
+            if (!guestName.trim()) {
+                newErrors.guestName = "Guest name is required.";
+            }
+            if (!guestEmail.trim()) {
+                newErrors.guestEmail = "Guest email is required.";
+            } else if (!guestEmail.includes("@")) {
+                newErrors.guestEmail = "Guest email must be valid.";
+            }
+        }
+
+        setErrors(newErrors);
+
+        // If no errors, navigate
+        if (Object.keys(newErrors).length === 0) {
+            navigate("/confirmation", {
             state: {
                 name,
                 email,
@@ -41,8 +67,11 @@ function Rsvp() {
                 guestSongRequest,
                 message,
             },
-        });
+            });
+        }
     };
+
+    const [errors, setErrors] = useState({});
 
     return (
         <div className="rsvp-page">
@@ -68,6 +97,7 @@ function Rsvp() {
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                         />
+                        {errors.name && <span className="error">{errors.name}</span>}
                     </label>
 
                     <label>
@@ -77,6 +107,7 @@ function Rsvp() {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
+                        {errors.email && <span className="error">{errors.email}</span>}
                     </label>
 
                     <div className="radio-group">
@@ -131,6 +162,7 @@ function Rsvp() {
                                     value={guestName}
                                     onChange={(e) => setGuestName(e.target.value)}
                                 />
+                                {errors.guestName && <span className="error">{errors.guestName}</span>}
                             </label>
 
                             <label>
@@ -140,6 +172,7 @@ function Rsvp() {
                                     value={guestEmail}
                                     onChange={(e) => setGuestEmail(e.target.value)}
                                 />
+                                {errors.guestEmail && <span className="error">{errors.guestEmail}</span>}
                             </label>
 
                             <div className="radio-group">
