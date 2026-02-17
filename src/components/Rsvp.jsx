@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import emailjs from "@emailjs/browser";
 
 
 function Rsvp() {
@@ -28,6 +28,12 @@ function Rsvp() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        const templateParams = {
+            from_name: name,
+            from_email: email,
+            message: "New RSVP submission recieved",
+        };
+
         const newErrors = {};
 
         if (!name.trim()) {
@@ -52,23 +58,34 @@ function Rsvp() {
 
         setErrors(newErrors);
 
-        // If no errors, navigate
-        if (Object.keys(newErrors).length === 0) {
+        // send email functionality
+        emailjs.send(
+            "service_08za9zv",
+            "template_ep3freg",
+            templateParams,
+            "CgjDAEX-R6YrhRsT6"
+        )
+        .then(() => {
+            //navigate after email sends
             navigate("/confirmation", {
-            state: {
-                name,
-                email,
-                vegetarian,
-                songRequest,
-                bringingGuest,
-                guestName,
-                guestEmail,
-                guestVegetarian,
-                guestSongRequest,
-                message,
-            },
+                state: {
+                    name,
+                    email,
+                    vegetarian,
+                    songRequest,
+                    bringingGuest,
+                    guestName,
+                    guestEmail,
+                    guestVegetarian,
+                    guestSongRequest,
+                    message,
+                },
             });
-        }
+        })
+        .catch((error) => {
+            console.error("Email send failed:", error);
+            alert("Something went wrong with sending your RSVP. please try again.");
+        });
     };
 
     const [errors, setErrors] = useState({});
