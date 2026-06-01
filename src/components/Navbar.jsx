@@ -33,7 +33,7 @@ function Navbar() {
                 <NavLink to="/" end onClick={() => setMenuOpen(false)}>Home</NavLink>
                 <NavLink to="/details" onClick={() => setMenuOpen(false)}>Details</NavLink>
                 <NavLink to="/rsvp" onClick={() => setMenuOpen(false)}>RSVP</NavLink>
-                <NavLink to="/registry" onClick={() => setMenuOpen(false)}>Registry</NavLink>
+                <NavLink to="/carousel" onClick={() => setMenuOpen(false)}>Carousel</NavLink>
             </div>
         </nav>
     );
