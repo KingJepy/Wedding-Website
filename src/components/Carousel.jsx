@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+
 import "./Carousel.css";
 import graduationpic from '../assets/graduationpic.jpg';
 import oldpic from '../assets/oldpic.jpg';
@@ -50,7 +50,7 @@ import prompic from '../assets/prompic.jpg';
 
 // export default Carousel;
 
-function ScrollingGallery() {
+function Carousel() {
   const images = [
     graduationpic,
     oldpic,
