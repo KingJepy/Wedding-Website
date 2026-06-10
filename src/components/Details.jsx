@@ -1,5 +1,6 @@
 import React from "react";
 import "../app.css";
+import { Link } from "react-router-dom";
 
 function Details() {
     return (
@@ -36,6 +37,18 @@ function Details() {
                         For those flying in, the nearest airport is ...... or ......
                     </p>
                 </section>
+            </div>
+            <div className="page-callout">
+                <h2>Meet Our Wedding Party</h2>
+
+                <p>
+                    We're lucky to have such incredible friends and family
+                    standing beside us on our wedding day.
+                </p>
+
+                <Link to="/bridal-party" className="callout-btn">
+                    Meet the Bridal Party →
+                </Link>
             </div>
         </div>
     );
