@@ -142,7 +142,37 @@
     margin-bottom: 1rem;
 }
 
+.page-callout {
+    margin-top: 5rem;
 
+    background: rgba(255,255,255,0.85);
+
+    padding: 3rem;
+    border-radius: 16px;
+
+    text-align: center;
+
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+.callout-btn {
+    display: inline-block;
+
+    margin-top: 1.5rem;
+    padding: 1rem 2rem;
+
+    background: #8a9a5b;
+    color: white;
+
+    text-decoration: none;
+    border-radius: 999px;
+
+    transition: all 0.3s ease;
+}
+
+.callout-btn:hover {
+    transform: translateY(-3px);
+}
 
 @media (max-width: 768px) {
     .details-page {
