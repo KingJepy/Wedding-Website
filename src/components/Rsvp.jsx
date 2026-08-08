@@ -64,8 +64,8 @@ function Rsvp() {
 
         // Information that will be sent to EmailJS
         const templateParams = {
-            from_name: name,
-            from_email: email,
+            name: name,
+            email: email,
 
             vegetarian: vegetarian ? "Yes" : "No",
             songRequest: songRequest,
