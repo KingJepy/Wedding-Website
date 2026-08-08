@@ -68,22 +68,17 @@ function Rsvp() {
             from_email: email,
 
             vegetarian: vegetarian ? "Yes" : "No",
-            song_request: songRequest || "No song request",
+            songRequest: songRequest,
 
-            bringing_guest: bringingGuest ? "Yes" : "No",
-
-            guest_name: bringingGuest ? guestName : "No guest",
-            guest_email: bringingGuest ? guestEmail : "No guest",
-            guest_vegetarian: bringingGuest
-                ? guestVegetarian
-                    ? "Yes"
-                    : "No"
+            bringingGuest: bringingGuest ? "Yes" : "No",
+            guestName: bringingGuest ? guestName : "N/A",
+            guestEmail: bringingGuest ? guestEmail : "N/A",
+            guestVegetarian: bringingGuest
+                ? (guestVegetarian ? "Yes" : "No")
                 : "N/A",
-            guest_song_request: bringingGuest
-                ? guestSongRequest || "No song request"
-                : "N/A",
+            guestSongRequest: bringingGuest ? guestSongRequest : "N/A",
 
-            message: message || "No message",
+            message: message,
         };
 
         emailjs.send(
