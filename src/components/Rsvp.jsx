@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import emailjs from "@emailjs/browser";
-
+import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
 function Rsvp() {
     const [showForm, setShowForm] = useState(false);
@@ -28,64 +28,99 @@ function Rsvp() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const templateParams = {
-            from_name: name,
-            from_email: email,
-            message: "New RSVP submission recieved",
-        };
-
         const newErrors = {};
 
+        // Main guest validation
         if (!name.trim()) {
             newErrors.name = "Name is required.";
         }
+
         if (!email.trim()) {
             newErrors.email = "Email is required.";
-        } else if (!email.includes("@")) {
-            newErrors.email = "Email must be valid.";
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            newErrors.email = "Please enter a valid email.";
         }
 
+        // +1 validation
         if (bringingGuest) {
             if (!guestName.trim()) {
                 newErrors.guestName = "Guest name is required.";
             }
+
             if (!guestEmail.trim()) {
                 newErrors.guestEmail = "Guest email is required.";
             } else if (!guestEmail.includes("@")) {
-                newErrors.guestEmail = "Guest email must be valid.";
+                newErrors.guestEmail = "Please enter a valid guest email.";
             }
         }
 
+        // Show validation errors
         setErrors(newErrors);
 
-        // send email functionality
+        // STOP HERE if there are validation errors
+        if (Object.keys(newErrors).length > 0) {
+            return;
+        }
+
+        // Information that will be sent to EmailJS
+        const templateParams = {
+            from_name: name,
+            from_email: email,
+
+            vegetarian: vegetarian ? "Yes" : "No",
+            song_request: songRequest || "No song request",
+
+            bringing_guest: bringingGuest ? "Yes" : "No",
+
+            guest_name: bringingGuest ? guestName : "No guest",
+            guest_email: bringingGuest ? guestEmail : "No guest",
+            guest_vegetarian: bringingGuest
+                ? guestVegetarian
+                    ? "Yes"
+                    : "No"
+                : "N/A",
+            guest_song_request: bringingGuest
+                ? guestSongRequest || "No song request"
+                : "N/A",
+
+            message: message || "No message",
+        };
+
         emailjs.send(
             "service_08za9zv",
             "template_ep3freg",
             templateParams,
-            "CgjDAEX-R6YrhRsT6"
+            import.meta.env.VITE_EMAILJS_PUBLIC_KEY
         )
-        .then(() => {
-            //navigate after email sends
-            navigate("/confirmation", {
-                state: {
-                    name,
-                    email,
-                    vegetarian,
-                    songRequest,
-                    bringingGuest,
-                    guestName,
-                    guestEmail,
-                    guestVegetarian,
-                    guestSongRequest,
-                    message,
-                },
+            .then((response) => {
+                console.log(
+                    "RSVP email sent successfully!",
+                    response.status,
+                    response.text
+                );
+
+                navigate("/confirmation", {
+                    state: {
+                        name,
+                        email,
+                        vegetarian,
+                        songRequest,
+                        bringingGuest,
+                        guestName,
+                        guestEmail,
+                        guestVegetarian,
+                        guestSongRequest,
+                        message,
+                    },
+                });
+            })
+            .catch((error) => {
+                console.error("Email send failed:", error);
+
+                alert(
+                    "Something went wrong sending your RSVP. Please try again."
+                );
             });
-        })
-        .catch((error) => {
-            console.error("Email send failed:", error);
-            alert("Something went wrong with sending your RSVP. please try again.");
-        });
     };
 
     const [errors, setErrors] = useState({});
